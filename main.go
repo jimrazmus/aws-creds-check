@@ -20,10 +20,10 @@ func main() {
 	cfg.WithCredentialsChainVerboseErrors(true)
 
 	session := session.Must(session.NewSession(cfg))
-	aws_sts := sts.New(session)
+	awssts := sts.New(session)
 
 	input := &sts.GetCallerIdentityInput{}
-	result, err := aws_sts.GetCallerIdentity(input)
+	result, err := awssts.GetCallerIdentity(input)
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
